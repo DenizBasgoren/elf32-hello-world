@@ -34,7 +34,7 @@
 07 00 00 00					// permissions: read, write, execute
 00 01 00 00					// 4 kb alignment
 
-// Data section (not really, lol)
+// Data section (not really, lol. We have only one section)
 
 "Hello world!!!" 0a			// length: 15
 
@@ -44,7 +44,7 @@
 
 b8 04 00 00 00				// write operation
 bb 01 00 00 00				// to stdout
-b9 54 00 66 60				// starting address of the string (60 66 00 00 + 54)
+b9 54 00 66 60				// starting address of the string (base + eh(34) + pht(20))
 ba 0f 00 00 00				// length of the string
 cd 80						// system call (interrupt 80h)
 
