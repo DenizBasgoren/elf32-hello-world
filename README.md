@@ -2,8 +2,8 @@
 Let's write hello world in machine code!
 
 - System: Linux
-- Machine: x86-64
-- Emulated machine: x86
+- Machine: x86
+
 - Executable format: elf (v1.2)
 
 To avoid programming using a hex editor, I've written a small tool, compiler.js, that will compile txt file into a binary file.
