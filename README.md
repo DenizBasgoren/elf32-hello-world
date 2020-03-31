@@ -53,3 +53,8 @@ b9 54 00 66 60				// starting address of the string
 ba 0f 00 00 00				// length of the string
 cd 80					// system call (interrupt 80h)
 ```
+
+# References
+- ELF Spec: https://refspecs.linuxfoundation.org/elf/elf.pdf
+- Online x86 assembler: https://defuse.ca/online-x86-assembler.htm#disassembly
+- ELF usage examples: http://www.muppetlabs.com/~breadbox/software/tiny/teensy.html
