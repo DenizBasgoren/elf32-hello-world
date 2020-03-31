@@ -1,0 +1,55 @@
+
+// Elf header
+
+// Let the base address be 0x 60 66 00 00 (hex)
+
+7f "ELF"					// elf magic numbers
+01							// 32 bit
+01							// little endian
+01							// version
+00 00 00 00 00 00 00 00 00	// padding
+
+02 00						// executable
+03 00						// x86 machine
+01 00 00 00					// version
+63 00 66 60					// entry address (base + eh(34) + pht(20) + data(0f) )
+34 00 00 00					// PHT (program header table) offset
+00 00 00 00					// no SHT (section header table)
+00 00 00 00					// processor flags
+34 00						// EH (elf header) size
+20 00						// PHT entry size
+01 00						// PHT entry count
+28 00						// SHT entry size
+00 00						// SHT entry count
+00 00						// string table index
+
+// Program header table
+
+01 00 00 00					// executable
+00 00 00 00					// segment start offset
+00 00 66 60					// segment start address
+00 00 00 00					// ignored in virtual mode
+85 00 00 00					// filesize = 133 bytes
+85 00 00 00					// memory size = filesize
+07 00 00 00					// permissions: read, write, execute
+00 01 00 00					// 4 kb alignment
+
+// Data section (not really, lol)
+
+"Hello world!!!" 0a			// length: 15
+
+// Program starts here
+
+// Print hello world
+
+b8 04 00 00 00				// write operation
+bb 01 00 00 00				// to stdout
+b9 54 00 66 60				// starting address of the string (60 66 00 00 + 54)
+ba 0f 00 00 00				// length of the string
+cd 80						// system call (interrupt 80h)
+
+// Exit program
+
+b8 01 00 00 00				// exit operation
+bb 00 00 00 00				// return 0
+cd 80						// system call (interrupt 80h)
